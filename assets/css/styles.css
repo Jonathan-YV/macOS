@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Meera+Inimai&display=swap');
+
+:root{
+    --tam-titulo: 64px;
+    --tam-subtitulo: 40px;
+    --tam-texto: 24px;
+    --tam-plano: 12px;
+    
+    --color-principal: red;
+    --color-secundario: blue;
+
+    --tipografia: 'Meera Inimai', sans-serif;
+
+}
+
+*{
+    margin: 0;
+}
+
+html{
+    font-size: 16px;
+    font-family: var(--tipografia);
+    user-select: none;
+}
+
+body{
+    background-color: #000;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+/*------------------------------------------------- Navbar -----------------------------------------*/
+
+.header{
+    position: fixed;
+    height: 1.5rem;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    font-size: 1rem;
+}
+
+.nav{
+    margin: 0 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.left{
+    display: flex;
+    height: 1.5rem;
+    align-items: center;
+}
+
+.menu{
+    padding: 0;
+    display: flex;
+    list-style: none;
+}
+
+.menu-item{
+    margin-left: 20px;
+}
+
+.right{
+    display: flex;
+    height: 1.5rem;
+    align-items: center;
+}
+
+
+/*------------------------------------------------- Wallpaper -----------------------------------------*/
+.wallpaper{
+    width: 100vw;
+    height: 100vh;
+    background-image: url(/assets/img/macOS-Big-Sur-Vector.jpg);
+    background-position: center;
+    background-size: cover;
+}
+
+
+/*------------------------------------------------- Dock -----------------------------------------*/
+
+.dock-wrapper{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    
+}
+
+
+.dock{
+    display: flex;
+}
+
+.dock-icon{
+    width: 4rem;
+    height: 4rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform-origin: center bottom;
+}
+
+.dock-icon img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.dock.animated .dock-icon{
+    transition: 0.1s;
+    transition-property: transform, transform-origin;
+}
+
+/*------------------------------------------------- Ventanas -----------------------------------------*/
+
+.item{
+    position: absolute;
+    top: 3rem;
+    left: 3rem;
+}
+
+.barra{
+    width: auto;
+    height: 35px;
+    border-top-right-radius: 20px;
+    align-items: flex-end;
+    color: black;
+    display: flex;
+    
+}
+
+.finder{
+    height: 500px;
+    width: 800px;
+    border-radius: 10px;
+    box-shadow: 10px 5px 30px rgba(0, 0, 0, 0.513);
+    
+}
+
+.division{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+}
+
+.menu-lateral{
+    width: 20%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(20px);
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.contenidoVentana{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.botones{
+    width: auto;
+    height: 35px;
+    display: flex;
+    align-items:flex-end;
+    margin-left: 20px;
+    
+}
+
+.circulo{
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    
+}
+
+.rojo{
+    background-color: red;
+    margin-right: 5px;
+}
+
+.naranja{
+    background-color: orange;
+    margin-right: 5px;
+}
+
+.verde{
+    background-color: seagreen;
+}
+
+.subtitulo{
+    margin-top: 15px;
+    margin-bottom: 5px;
+    margin-left: 20px;
+    font-size: 14px;
+    color: rgb(47, 47, 47);
+
+}
+
+.menu-lateral p{
+    font-size: 15px;
+    color: rgb(20, 20, 20);
+    width: max-content;
+    margin: 0 0 0 0;
+    margin-left: 6px;
+
+}
+
+.elemento{
+    display: flex;
+    height: 20px;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.azul{
+    color: rgb(14, 88, 184);
+}
