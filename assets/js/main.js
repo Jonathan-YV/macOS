@@ -26,13 +26,11 @@ function imprimirFecha(){
         minutos = minutos + ' ';
     }
 
-
     const fechaTotal = diaS + fechaD + 'de ' + mes + 'de ' + año + hora + ':' + minutos + ampm
     contenedor.innerHTML = fechaTotal
 }
 
 setInterval(imprimirFecha,100)
-
 
 /*------------------------------- Dock -----------------------------*/
 
@@ -131,17 +129,22 @@ class Dock{
 
 new Dock(document.querySelector('.dock'));
 
-
 /*------------------------------- Ventanas -----------------------------*/
 
 const el = document.querySelector('.item');
 const barra = document.querySelector('.barra')
+const botones = document.querySelector('.botones')
+
+let cX2 = el.style.left;
+let cY2 = el.style.top;
 
 barra.addEventListener('mousedown', mousedown);
+botones.addEventListener('mousedown', mousedown);
 
 function mousedown(e){
     window.addEventListener('mousemove',mousemove);
     window.addEventListener('mouseup',mouseup);
+    
 
     let prevX = e.clientX;
     let prevY = e.clientY;
@@ -149,11 +152,24 @@ function mousedown(e){
     function mousemove(e){
         let newX = prevX - e.clientX;
         let newY = prevY - e.clientY;
+        let centro = (800 * e.clientX) / innerWidth;
 
         const rect = el.getBoundingClientRect();
-        el.style.left = rect.left - newX + 'px';
-        el.style.top = rect.top - newY + 'px';
-
+        if (rect.top <= 25){
+            console.log('no pasa')
+            el.style.top = rect.top + 0.5 + 'px';
+        }
+        else{
+            if (el.clientWidth == innerWidth){
+                el.style.width = '800px';
+                el.style.height = '500px';
+                el.style.left = rect.left - newX + e.clientX - centro +'px';
+            }
+            else{
+                el.style.left = rect.left - newX + 'px';
+                el.style.top = rect.top - newY + 'px';
+            } 
+        }
         prevX = e.clientX;
         prevY = e.clientY;
     }
@@ -164,3 +180,28 @@ function mousedown(e){
         
     }
 }
+
+/*-------------------------- Botones ventanas --------------------------*/
+
+const minimizar = document.querySelectorAll('.minimizar');
+const maximizar = document.querySelectorAll('.maximizar');
+const cerrar = document.querySelectorAll('.cerrar')
+
+maximizar.forEach((max) =>{
+    max.addEventListener('click',() =>{
+        if(el.clientWidth == innerWidth){
+            el.style.left = cX2;
+            el.style.top = cY2;
+            el.style.width = '800px';
+            el.style.height = '500px';
+        }
+        else{
+            cX2 = el.style.left;
+            cY2 = el.style.top;
+            el.style.left = '0px';
+            el.style.top = '1.5rem';
+            el.style.width = '100vw';
+            el.style.height = 'calc(100vh - 5rem)';     
+        } 
+    })
+})
