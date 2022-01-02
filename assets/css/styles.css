@@ -264,13 +264,15 @@ body{
 }
 
 .archivos{
-    
+    width: auto;
+    height: auto;
     display: grid;
     gap: 2rem;
     grid-auto-rows: 6rem;
     grid-template-columns: repeat(auto-fill, minmax(6rem,1fr));
 
     margin: 25px 20px 0 20px;
+    
 }
 
 .archivos p{
