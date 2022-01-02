@@ -201,7 +201,7 @@ maximizar.forEach((max) =>{
             el.style.left = '0px';
             el.style.top = '1.5rem';
             el.style.width = '100vw';
-            el.style.height = 'calc(100vh - 5rem)';     
+            el.style.height = 'calc(100vh - 5.6rem)';     
         } 
     })
 })
