@@ -155,7 +155,100 @@ botonesDock.forEach((boton) => {
 
 /*------------------------------- Ventanas -----------------------------*/
 
-const el = document.querySelector('.item');
+const clasesVentanas = ['.finder','.apps','.music','.maps','.message','.vs', '.safari','.settings','.console','.whatsapp']
+
+clasesVentanas.forEach((clases) =>{
+    const el = document.querySelector(clases);
+    el.addEventListener('mousedown', mousedown);
+
+    function mousedown(e){
+        window.addEventListener('mousemove',mousemove);
+        window.addEventListener('mouseup',mouseup);
+        
+    
+        let prevX = e.clientX;
+        let prevY = e.clientY;
+    
+        function mousemove(e){
+            let newX = prevX - e.clientX;
+            let newY = prevY - e.clientY;
+            let centro = (800 * e.clientX) / innerWidth;
+    
+            const rect = el.getBoundingClientRect();
+            if (rect.top <= 25){
+                console.log('no pasa')
+                el.style.top = '25.1px';
+            }
+            else{
+                if (el.clientWidth == innerWidth){
+                    el.style.width = '800px';
+                    el.style.height = '500px';
+                    el.style.left = rect.left - newX + e.clientX - centro +'px';
+                }
+                else{
+                    el.style.left = rect.left - newX + 'px';
+                    el.style.top = rect.top - newY + 'px';
+                } 
+            }
+            prevX = e.clientX;
+            prevY = e.clientY;
+        }
+    
+        function mouseup(){
+            window.removeEventListener('mousemove',mousemove);
+            windows.removeEventListener('mouseup',mouseup);
+            
+        }
+    }
+
+    const minimizar = document.querySelector(clases + ' .minimizar');
+    const maximizar = document.querySelector(clases + ' .maximizar');
+    const cerrar = document.querySelector(clases + ' .cerrar');
+
+    if (minimizar != null && maximizar != null && cerrar != null){
+
+        maximizar.addEventListener('click',() =>{
+            if(el.clientWidth == innerWidth){
+                el.style.left = cX2;
+                el.style.top = cY2;
+                el.style.width = '800px';
+                el.style.height = '500px';
+            }
+            else{
+                cX2 = el.style.left;
+                cY2 = el.style.top;
+                el.style.left = '0px';
+                el.style.top = '1.5rem';
+                el.style.width = '100vw';
+                el.style.height = 'calc(100vh - 7rem)';     
+            } 
+        })
+        
+        minimizar.addEventListener('click',()=>{
+            /* document.getElementById('finder-b').classList.toggle('min') */
+            document.querySelector(clases).classList.toggle('min')
+            
+        })
+        
+        cerrar.addEventListener('click',()=>{
+            /* document.getElementById('finder-b').classList.toggle('min') */
+            document.querySelector(clases).classList.toggle('min')
+            document.querySelector(clases + '-b' + ' .estatus').style.backgroundColor = 'rgba(0, 0, 0, 0)'
+        })
+        
+    }
+    else{
+        console.log('Faltan botones de la ventana ' + clases)
+        console.log(document.querySelector(clases + ' .minimizar'))
+        console.log(document.querySelector(clases + ' .maximizar'))
+        console.log(document.querySelector(clases + ' .cerrar'))
+    }
+    
+})
+
+
+
+/* const el = document.querySelector('.finder');
 const barra = document.querySelector('.barra')
 const botones = document.querySelector('.botones')
 
@@ -163,9 +256,9 @@ let cX2 = el.style.left;
 let cY2 = el.style.top;
 
 barra.addEventListener('mousedown', mousedown);
-botones.addEventListener('mousedown', mousedown);
+botones.addEventListener('mousedown', mousedown); */
 
-function mousedown(e){
+/* function mousedown(e){
     window.addEventListener('mousemove',mousemove);
     window.addEventListener('mouseup',mouseup);
     
@@ -203,11 +296,11 @@ function mousedown(e){
         windows.removeEventListener('mouseup',mouseup);
         
     }
-}
+} */
 
 /*-------------------------- Botones ventanas --------------------------*/
 
-const minimizar = document.querySelectorAll('.minimizar');
+/* const minimizar = document.querySelectorAll('.minimizar');
 const maximizar = document.querySelectorAll('.maximizar');
 const cerrar = document.querySelectorAll('.cerrar')
 
@@ -242,4 +335,4 @@ cerrar.forEach((cerr) => {
         document.getElementById('finder-b').classList.toggle('min')
         document.querySelector('.finder-b .estatus').style.backgroundColor = 'rgba(0, 0, 0, 0)'
     })
-})
+}) */
