@@ -39,7 +39,7 @@ function between(val, min, max){
 }
 
 function scaling(d){
-    return Math.max(Math.min(-0.2 * Math.pow(d,2) + 1.05,1),0);
+    return Math.max(Math.min(-0.4 * Math.pow(d,2) + 1.05,1),0);
 }
 
 const TransformOrigins = {
@@ -129,6 +129,44 @@ class Dock{
 
 new Dock(document.querySelector('.dock'));
 
+const botonesDock = ['finder-b','apps-b','music-b','message-b','maps-b',
+                    'line-b','vs-b','safari-b','settings-b','console-b',
+                    'whatsapp-b']
+
+botonesDock.forEach((boton) => {
+    document.querySelector('.' + boton).addEventListener('mouseover',()=>{
+        document.querySelector('.' + boton + ' p').style.display = 'flex'
+    })
+
+    document.querySelector('.' + boton).addEventListener('mouseout',()=>{
+        document.querySelector('.' + boton + ' p').style.display = 'none'
+    })
+
+    document.querySelector('.' + boton).addEventListener('click',()=>{
+        console.log(boton)
+        document.getElementById(boton).classList.toggle('min')
+    })
+})
+
+/* const botonFinder = document.querySelector('.finder-b');
+
+botonFinder.addEventListener('click',()=>{
+    console.log('Boton Finder')
+})
+
+botonFinder.addEventListener('mouseover',()=>{
+    console.log('Mostrar texto')
+    document.querySelector('.finder-b p').style.display = 'flex'
+})
+
+botonFinder.addEventListener('mouseout',()=>{
+    console.log('Quitar texto')
+    document.querySelector('.finder-b p').style.display = 'none'
+}) */
+
+
+
+
 /*------------------------------- Ventanas -----------------------------*/
 
 const el = document.querySelector('.item');
@@ -203,5 +241,11 @@ maximizar.forEach((max) =>{
             el.style.width = '100vw';
             el.style.height = 'calc(100vh - 5.6rem)';     
         } 
+    })
+})
+
+minimizar.forEach((min) =>{
+    min.addEventListener('click',()=>{
+        document.getElementById('finder-b').classList.toggle('min')
     })
 })

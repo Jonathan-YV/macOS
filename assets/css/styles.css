@@ -102,10 +102,22 @@ body{
     height: 4rem;
     color: white;
     display: flex;
+    flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
     transform-origin: center bottom;
     z-index: 1;
+}
+
+.dock-icon p{
+    position: absolute;
+    font-size: 10px;
+    top: -15px;
+    background-color: rgba(231, 231, 231, 0.507);
+    display: none;
+    padding: 2px 5px;
+    border-radius: 5px;
+    color: black;
 }
 
 .dock-icon img{
@@ -117,6 +129,10 @@ body{
 .dock.animated .dock-icon{
     transition: 0.1s;
     transition-property: transform, transform-origin;
+}
+
+.min{
+    display: none;
 }
 
 /*------------------------------------------------- Ventanas -----------------------------------------*/
@@ -230,10 +246,3 @@ body{
     color: rgb(14, 88, 184);
 }
 
-.max{
-    width: 100vw;
-    height: calc(100vh - 6rem);
-    top: 1.5rem;
-    left: 0;
-    
-}
