@@ -291,8 +291,8 @@ body{
     position: absolute;
     top: 10rem;
     left: 3rem;
-    height: 500px;
-    width: 800px;
+    height: 800px;
+    width: 1500px;
     border-radius: 10px;
     background-color: rgb(255, 255, 255);
     box-shadow: 10px 5px 30px rgba(0, 0, 0, 0.5);
