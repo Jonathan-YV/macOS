@@ -143,29 +143,15 @@ botonesDock.forEach((boton) => {
     })
 
     document.querySelector('.' + boton).addEventListener('click',()=>{
-        console.log(boton)
-        document.getElementById(boton).classList.toggle('min')
+        if (document.getElementById(boton) != null){
+            document.getElementById(boton).classList.toggle('min');
+            document.querySelector('.' + boton + ' .estatus').style.backgroundColor = 'rgb(250, 250, 250)'
+        }
+        else{
+            console.log('Pronto')
+        }
     })
 })
-
-/* const botonFinder = document.querySelector('.finder-b');
-
-botonFinder.addEventListener('click',()=>{
-    console.log('Boton Finder')
-})
-
-botonFinder.addEventListener('mouseover',()=>{
-    console.log('Mostrar texto')
-    document.querySelector('.finder-b p').style.display = 'flex'
-})
-
-botonFinder.addEventListener('mouseout',()=>{
-    console.log('Quitar texto')
-    document.querySelector('.finder-b p').style.display = 'none'
-}) */
-
-
-
 
 /*------------------------------- Ventanas -----------------------------*/
 
@@ -195,7 +181,7 @@ function mousedown(e){
         const rect = el.getBoundingClientRect();
         if (rect.top <= 25){
             console.log('no pasa')
-            el.style.top = rect.top + 0.5 + 'px';
+            el.style.top = '25.1px';
         }
         else{
             if (el.clientWidth == innerWidth){
@@ -239,7 +225,7 @@ maximizar.forEach((max) =>{
             el.style.left = '0px';
             el.style.top = '1.5rem';
             el.style.width = '100vw';
-            el.style.height = 'calc(100vh - 5.6rem)';     
+            el.style.height = 'calc(100vh - 7rem)';     
         } 
     })
 })
@@ -247,5 +233,13 @@ maximizar.forEach((max) =>{
 minimizar.forEach((min) =>{
     min.addEventListener('click',()=>{
         document.getElementById('finder-b').classList.toggle('min')
+        
+    })
+})
+
+cerrar.forEach((cerr) => {
+    cerr.addEventListener('click',()=>{
+        document.getElementById('finder-b').classList.toggle('min')
+        document.querySelector('.finder-b .estatus').style.backgroundColor = 'rgba(0, 0, 0, 0)'
     })
 })
