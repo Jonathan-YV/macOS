@@ -157,9 +157,17 @@ body{
     height: 35px;
     border-top-right-radius: 20px;
     align-items: flex-end;
+    justify-content: space-between;
     color: black;
     display: flex;
-    
+}
+
+.buscar{
+    padding-right: 20px;
+}
+
+.navegar{
+    display: flex;
 }
 
 .finder{
@@ -253,5 +261,27 @@ body{
 
 .azul{
     color: rgb(14, 88, 184);
+}
+
+.archivos{
+    
+    display: grid;
+    gap: 2rem;
+    grid-auto-rows: 6rem;
+    grid-template-columns: repeat(auto-fill, minmax(6rem,1fr));
+
+    margin: 25px 20px 0 20px;
+}
+
+.archivos p{
+    text-align: center;
+}
+
+.items-archivos img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
 }
 

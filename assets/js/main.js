@@ -129,8 +129,8 @@ class Dock{
 
 new Dock(document.querySelector('.dock'));
 
-const botonesDock = ['finder-b','apps-b','music-b','message-b','maps-b',
-                    'line-b','vs-b','safari-b','settings-b','console-b',
+const botonesDock = ['finder-b','apps-b','music-b','maps-b',
+                    'message-b','vs-b','safari-b','settings-b','console-b',
                     'whatsapp-b']
 
 botonesDock.forEach((boton) => {
