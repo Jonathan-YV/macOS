@@ -159,7 +159,27 @@ const clasesVentanas = ['.finder','.apps','.music','.maps','.message','.vs', '.s
 
 clasesVentanas.forEach((clases) =>{
     const el = document.querySelector(clases);
-    el.addEventListener('mousedown', mousedown);
+    const barra = document.querySelector(clases + ' .barra')
+    const botones = document.querySelector(clases + ' .botones')
+
+    if (barra != null && botones != null){
+        barra.addEventListener('mousedown', mousedown);
+        botones.addEventListener('mousedown', mousedown);
+    }
+
+    /* el.addEventListener('mousedown', mousedown); */
+    
+
+
+    /* const el = document.querySelector('.finder');
+    const barra = document.querySelector('.barra')
+    const botones = document.querySelector('.botones')
+
+    let cX2 = el.style.left;
+    let cY2 = el.style.top;
+
+    barra.addEventListener('mousedown', mousedown);
+    botones.addEventListener('mousedown', mousedown); */
 
     function mousedown(e){
         window.addEventListener('mousemove',mousemove);
@@ -239,9 +259,6 @@ clasesVentanas.forEach((clases) =>{
     }
     else{
         console.log('Faltan botones de la ventana ' + clases)
-        console.log(document.querySelector(clases + ' .minimizar'))
-        console.log(document.querySelector(clases + ' .maximizar'))
-        console.log(document.querySelector(clases + ' .cerrar'))
     }
     
 })
@@ -336,3 +353,13 @@ cerrar.forEach((cerr) => {
         document.querySelector('.finder-b .estatus').style.backgroundColor = 'rgba(0, 0, 0, 0)'
     })
 }) */
+
+
+/*-------------------------- Busqueda safari --------------------------*/
+
+const obtenerURL = () =>{
+    const pagina = document.getElementById('iframe-Safari')
+    let direccionWeb = document.getElementById('urlBuscar').value;
+    console.log(direccionWeb)
+    pagina.src = direccionWeb;
+}

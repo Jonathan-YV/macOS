@@ -68,7 +68,7 @@
             <div class="dock-icon music-b">
                 <div class="estatus">.</div>
                 <img src="assets/img/iconos/apple_music_macos_bigsur_icon_190383.png" alt="">
-                <p>Música</p>
+                <p>Itunes music</p>
             </div>
            
             <div class="dock-icon maps-b">
@@ -244,14 +244,38 @@
     <div class="vs" id='vs-b'>
     </div>
 
-    <div class="safari min" id='safari-b'>
-        <div class="menu-lateral">
+    <div class="safari" id='safari-b'>
+        <div class="barra">
             <div class="botones">
                 <div class="circulo rojo cerrar"></div>
                 <div class="circulo naranja maximizar "></div>
                 <div class="circulo verde minimizar"></div>
+                <i class="fas fa-chevron-left menu-item"></i>
+                <i class="fas fa-chevron-right menu-item"></i>
             </div>
+            <div class="barraBusquedaSafari">
+                <i class="fas fa-shield-alt"></i>
+                <form action="">
+                    <input type="url" id='urlBuscar'>
+                    <input type="button" onclick='obtenerURL();'/>
+                </form>
+                
+            </div>
+            <div class="buscar">
+                <i class="fas fa-external-link-alt menu-item"></i>
+                <i class="fas fa-arrow-down menu-item"></i>
+                <i class="fas fa-th-large menu-item"></i>
+            </div> 
         </div>
+        <div class="contenidoSafari">
+            <iframe id="iframe-Safari"
+            title="Inline Frame Example"
+            src="https://es.wikipedia.org/wiki/Wikipedia:Portada">
+            </iframe>
+        </div>
+        
+            
+        
     </div>
 
     <div class="settings" id='settings-b'>

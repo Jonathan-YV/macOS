@@ -285,7 +285,7 @@ body{
 
 }
 
-/*------------------------------------------------- Finder -----------------------------------------*/
+/*------------------------------------------------- Safari-----------------------------------------*/
 
 .safari{
     position: absolute;
@@ -294,6 +294,37 @@ body{
     height: 500px;
     width: 800px;
     border-radius: 10px;
-    background-color: rgb(255, 0, 0);
+    background-color: rgb(255, 255, 255);
     box-shadow: 10px 5px 30px rgba(0, 0, 0, 0.5);
 }
+
+.barraBusquedaSafari{
+    display: flex;
+    height: 100%;
+    align-items: flex-end;
+    
+}
+
+.enlaceSafari{
+    width: 400px;
+    text-align: center;
+    background-color: rgb(192, 192, 192);
+    border: 1px solid rgb(119, 119, 119);
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+.contenidoSafari{
+    display: flex;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+#iframe-Safari{
+    width: 100%;
+    height: 100%;
+    margin-top: 10px;
+    border-radius: 10px;
+    border: none;
+} 
