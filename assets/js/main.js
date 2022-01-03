@@ -129,6 +129,9 @@ class Dock{
 
 new Dock(document.querySelector('.dock'));
 
+
+
+
 const botonesDock = ['finder-b','apps-b','music-b','maps-b',
                     'message-b','vs-b','safari-b','settings-b','console-b',
                     'whatsapp-b']
@@ -162,24 +165,14 @@ clasesVentanas.forEach((clases) =>{
     const barra = document.querySelector(clases + ' .barra')
     const botones = document.querySelector(clases + ' .botones')
 
+
     if (barra != null && botones != null){
         barra.addEventListener('mousedown', mousedown);
         botones.addEventListener('mousedown', mousedown);
     }
-
-    /* el.addEventListener('mousedown', mousedown); */
-    
-
-
-    /* const el = document.querySelector('.finder');
-    const barra = document.querySelector('.barra')
-    const botones = document.querySelector('.botones')
-
-    let cX2 = el.style.left;
-    let cY2 = el.style.top;
-
-    barra.addEventListener('mousedown', mousedown);
-    botones.addEventListener('mousedown', mousedown); */
+    else{
+        /* console.log('No entre') */
+    }
 
     function mousedown(e){
         window.addEventListener('mousemove',mousemove);
@@ -216,8 +209,60 @@ clasesVentanas.forEach((clases) =>{
     
         function mouseup(){
             window.removeEventListener('mousemove',mousemove);
-            windows.removeEventListener('mouseup',mouseup);
+            window.removeEventListener('mouseup',mouseup);
             
+        }
+    }
+
+    const resizers = document.querySelectorAll(clases + ' .resizer');
+    let currentRisizer;
+
+    for(let resizer of resizers){
+        resizer.addEventListener('mousedown',mousedown)
+
+        function mousedown(e){
+            currentRisizer = e.target;
+            let prevX = e.clientX;
+            let prevY = e.clientY;
+
+            window.addEventListener('mousemove',mousemove);
+            window.addEventListener('mouseup',mouseup);
+
+            function mousemove(e){
+                const rect = el.getBoundingClientRect();
+
+                if(currentRisizer.classList.contains('se')){
+                    el.style.width = rect.width - (prevX - e.clientX) + 'px';
+                    el.style.height= rect.height - (prevY - e.clientY) + 'px';
+                }
+                else if(currentRisizer.classList.contains('sw')){
+                    el.style.width = rect.width + (prevX - e.clientX) + 'px';
+                    el.style.height= rect.height - (prevY - e.clientY) + 'px';
+                    el.style.left = rect.left - (prevX - e.clientX) + 'px'
+                }
+                else if(currentRisizer.classList.contains('ne')){
+                    el.style.width = rect.width - (prevX - e.clientX) + 'px';
+                    el.style.height= rect.height + (prevY - e.clientY) + 'px';
+                    el.style.top = rect.top - (prevY - e.clientY) + 'px'
+                }
+                else if(currentRisizer.classList.contains('nw')){
+                    el.style.width = rect.width + (prevX - e.clientX) + 'px';
+                    el.style.height= rect.height + (prevY - e.clientY) + 'px';
+                    el.style.top = rect.top - (prevY - e.clientY) + 'px';
+                    el.style.left = rect.left - (prevX - e.clientX) + 'px';
+                }
+
+                prevX = e.clientX;
+                prevY = e.clientY;
+            }
+
+            function mouseup(){
+                window.removeEventListener('mousemove',mousemove);
+                window.removeEventListener('mouseup',mouseup);
+                /* isResizing = false; */
+            }
+
+
         }
     }
 
@@ -258,7 +303,7 @@ clasesVentanas.forEach((clases) =>{
         
     }
     else{
-        console.log('Faltan botones de la ventana ' + clases)
+        /* console.log('Faltan botones de la ventana ' + clases) */
     }
     
 })
@@ -363,3 +408,8 @@ const obtenerURL = () =>{
     console.log(direccionWeb)
     pagina.src = direccionWeb;
 }
+
+
+/*  */
+
+
