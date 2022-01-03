@@ -338,6 +338,18 @@ body{
 } 
 
 
+.console{
+    position: absolute;
+    top: 15rem;
+    left: 3rem;
+    width: 800px;
+    height: 500px;
+    border-radius: 10px;
+    background-color: rgba(0, 15, 20,0.8);
+    box-shadow: 10px 5px 30px rgba(0, 0, 0, 0.5);
+}
+
+
 /* Tamaño */
 
 .resizer{
@@ -345,8 +357,14 @@ body{
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: black;
+    background-color: rgba(0, 0, 0, 0);
     z-index: 2;
+}
+
+.resizerL{
+    background-color: rgba(0, 0, 0, 0);
+    position: absolute;
+    z-index: 1;
 }
 
 .nw{
@@ -371,4 +389,36 @@ body{
     bottom: -1px;
     right: -1px;
     cursor: se-resize;
+}
+
+.n{
+    top: -1px;
+    left: -1px;
+    cursor: n-resize;
+    width: 100%;
+    height: 10px;
+}
+
+.e{
+    top: -1px;
+    left: -1px;
+    cursor: e-resize;
+    width: 10px;
+    height: 100%;
+}
+
+.w{
+    bottom: -1px;
+    right: -1px;
+    cursor: w-resize;
+    width: 10px;
+    height: 100%;
+}
+
+.s{
+    bottom: -1px;
+    left: -1px;
+    cursor: s-resize;
+    width: 100%;
+    height: 10px;
 }

@@ -136,19 +136,37 @@ const botonesDock = ['finder-b','apps-b','music-b','maps-b',
                     'message-b','vs-b','safari-b','settings-b','console-b',
                     'whatsapp-b']
 
-botonesDock.forEach((boton) => {
-    document.querySelector('.' + boton).addEventListener('mouseover',()=>{
-        document.querySelector('.' + boton + ' p').style.display = 'flex'
+const clasesVentanas = ['.finder','.apps','.music','.maps','.message','.vs', '.safari','.settings','.console','.whatsapp']
+
+/* const clasesVentanas = ['.finder','.apps','.music','.maps','.message','.vs', '.safari','.settings','.console','.whatsapp'] */
+
+clasesVentanas.forEach((boton) => {
+    document.querySelector(boton + '-b').addEventListener('mouseover',()=>{
+        document.querySelector(boton + '-b' + ' p').style.display = 'flex'
     })
 
-    document.querySelector('.' + boton).addEventListener('mouseout',()=>{
-        document.querySelector('.' + boton + ' p').style.display = 'none'
+    document.querySelector(boton + '-b').addEventListener('mouseout',()=>{
+        document.querySelector(boton + '-b' + ' p').style.display = 'none'
     })
 
-    document.querySelector('.' + boton).addEventListener('click',()=>{
-        if (document.getElementById(boton) != null){
-            document.getElementById(boton).classList.toggle('min');
-            document.querySelector('.' + boton + ' .estatus').style.backgroundColor = 'rgb(250, 250, 250)'
+    document.querySelector(boton + '-b').addEventListener('click',()=>{
+        if (document.querySelector(boton) != null){
+            document.querySelector(boton).classList.toggle('min');
+            document.querySelector(boton + '-b' + ' .estatus').style.backgroundColor = 'rgb(250, 250, 250)'
+
+            if (document.querySelector(boton).style.zIndex != 5){
+                for (let ventana of clasesVentanas){
+                    if (ventana != boton){
+                        if(document.querySelector(ventana) != null){
+                            document.querySelector(ventana).style.zIndex = '3';
+                        } 
+                    }
+                    else{
+                        document.querySelector(boton).style.zIndex = '5';
+                    }
+                } 
+            }
+
         }
         else{
             console.log('Pronto')
@@ -157,21 +175,37 @@ botonesDock.forEach((boton) => {
 })
 
 /*------------------------------- Ventanas -----------------------------*/
+/*------ Arrastrar, redimencionar, botones de minimizar, maximizar, cerrar -------*/
 
-const clasesVentanas = ['.finder','.apps','.music','.maps','.message','.vs', '.safari','.settings','.console','.whatsapp']
+
 
 clasesVentanas.forEach((clases) =>{
     const el = document.querySelector(clases);
     const barra = document.querySelector(clases + ' .barra')
     const botones = document.querySelector(clases + ' .botones')
 
+    function focus(){
+        if (el.style.zIndex != 5){
+            for (let ventana of clasesVentanas){
+                if (ventana != clases){
+                    if(document.querySelector(ventana) != null){
+                        document.querySelector(ventana).style.zIndex = '3';
+                    } 
+                }
+                else{
+                    el.style.zIndex = '5';
+                }
+            } 
+        }
+    }
 
-    if (barra != null && botones != null){
+    if (el != null){
+        el.addEventListener('click',()=>{
+            focus();  
+        })
+
         barra.addEventListener('mousedown', mousedown);
         botones.addEventListener('mousedown', mousedown);
-    }
-    else{
-        /* console.log('No entre') */
     }
 
     function mousedown(e){
@@ -186,6 +220,8 @@ clasesVentanas.forEach((clases) =>{
             let newX = prevX - e.clientX;
             let newY = prevY - e.clientY;
             let centro = (800 * e.clientX) / innerWidth;
+
+            focus(); 
     
             const rect = el.getBoundingClientRect();
             if (rect.top <= 25){
@@ -215,7 +251,56 @@ clasesVentanas.forEach((clases) =>{
     }
 
     const resizers = document.querySelectorAll(clases + ' .resizer');
+    const resizersL = document.querySelectorAll(clases + ' .resizerL');
     let currentRisizer;
+
+    for(let resizerL of resizersL){
+        resizerL.addEventListener('mousedown',mousedown)
+
+        function mousedown(e){
+            currentRisizer = e.target;
+            let prevX = e.clientX;
+            let prevY = e.clientY;
+
+            window.addEventListener('mousemove',mousemove);
+            window.addEventListener('mouseup',mouseup);
+
+            focus();
+
+            function mousemove(e){
+                const rect = el.getBoundingClientRect();
+
+                       
+
+                if(currentRisizer.classList.contains('n')){
+                    el.style.height= rect.height + (prevY - e.clientY) + 'px';
+                    el.style.top = rect.top - (prevY - e.clientY) + 'px';
+                }
+                else if(currentRisizer.classList.contains('e')){
+                    el.style.width = rect.width + (prevX - e.clientX) + 'px';
+                    el.style.left = rect.left - (prevX - e.clientX) + 'px'
+                }
+                else if(currentRisizer.classList.contains('w')){
+                    el.style.width = rect.width - (prevX - e.clientX) + 'px';
+                }
+                else if(currentRisizer.classList.contains('s')){
+                    el.style.height= rect.height - (prevY - e.clientY) + 'px';
+                }
+
+                prevX = e.clientX;
+                prevY = e.clientY;
+            }
+
+            function mouseup(){
+                window.removeEventListener('mousemove',mousemove);
+                window.removeEventListener('mouseup',mouseup);
+                /* isResizing = false; */
+            }
+
+
+        }
+        
+    }
 
     for(let resizer of resizers){
         resizer.addEventListener('mousedown',mousedown)
@@ -224,6 +309,8 @@ clasesVentanas.forEach((clases) =>{
             currentRisizer = e.target;
             let prevX = e.clientX;
             let prevY = e.clientY;
+
+            focus();
 
             window.addEventListener('mousemove',mousemove);
             window.addEventListener('mouseup',mouseup);
@@ -310,96 +397,6 @@ clasesVentanas.forEach((clases) =>{
 
 
 
-/* const el = document.querySelector('.finder');
-const barra = document.querySelector('.barra')
-const botones = document.querySelector('.botones')
-
-let cX2 = el.style.left;
-let cY2 = el.style.top;
-
-barra.addEventListener('mousedown', mousedown);
-botones.addEventListener('mousedown', mousedown); */
-
-/* function mousedown(e){
-    window.addEventListener('mousemove',mousemove);
-    window.addEventListener('mouseup',mouseup);
-    
-
-    let prevX = e.clientX;
-    let prevY = e.clientY;
-
-    function mousemove(e){
-        let newX = prevX - e.clientX;
-        let newY = prevY - e.clientY;
-        let centro = (800 * e.clientX) / innerWidth;
-
-        const rect = el.getBoundingClientRect();
-        if (rect.top <= 25){
-            console.log('no pasa')
-            el.style.top = '25.1px';
-        }
-        else{
-            if (el.clientWidth == innerWidth){
-                el.style.width = '800px';
-                el.style.height = '500px';
-                el.style.left = rect.left - newX + e.clientX - centro +'px';
-            }
-            else{
-                el.style.left = rect.left - newX + 'px';
-                el.style.top = rect.top - newY + 'px';
-            } 
-        }
-        prevX = e.clientX;
-        prevY = e.clientY;
-    }
-
-    function mouseup(){
-        window.removeEventListener('mousemove',mousemove);
-        windows.removeEventListener('mouseup',mouseup);
-        
-    }
-} */
-
-/*-------------------------- Botones ventanas --------------------------*/
-
-/* const minimizar = document.querySelectorAll('.minimizar');
-const maximizar = document.querySelectorAll('.maximizar');
-const cerrar = document.querySelectorAll('.cerrar')
-
-maximizar.forEach((max) =>{
-    max.addEventListener('click',() =>{
-        if(el.clientWidth == innerWidth){
-            el.style.left = cX2;
-            el.style.top = cY2;
-            el.style.width = '800px';
-            el.style.height = '500px';
-        }
-        else{
-            cX2 = el.style.left;
-            cY2 = el.style.top;
-            el.style.left = '0px';
-            el.style.top = '1.5rem';
-            el.style.width = '100vw';
-            el.style.height = 'calc(100vh - 7rem)';     
-        } 
-    })
-})
-
-minimizar.forEach((min) =>{
-    min.addEventListener('click',()=>{
-        document.getElementById('finder-b').classList.toggle('min')
-        
-    })
-})
-
-cerrar.forEach((cerr) => {
-    cerr.addEventListener('click',()=>{
-        document.getElementById('finder-b').classList.toggle('min')
-        document.querySelector('.finder-b .estatus').style.backgroundColor = 'rgba(0, 0, 0, 0)'
-    })
-}) */
-
-
 /*-------------------------- Busqueda safari --------------------------*/
 
 const obtenerURL = () =>{
@@ -410,6 +407,5 @@ const obtenerURL = () =>{
 }
 
 
-/*  */
 
 
