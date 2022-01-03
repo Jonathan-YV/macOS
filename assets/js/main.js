@@ -5,6 +5,18 @@ setTimeout(() =>{
     loader.style.display = 'none'
   },2500)
 
+
+
+  function quitarSesion(){
+     const fondo = document.querySelector('.sesion')
+     const dockV = document.querySelector('.dock-wrapper')
+     const headerV = document.querySelector('.header')
+
+     fondo.style.display = 'none'; 
+     dockV.style.visibility = 'visible'; 
+     headerV.style.visibility = 'visible'; 
+  }
+
 /*------------------------------- Fecha -----------------------------*/
 
 function imprimirFecha(){

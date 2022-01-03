@@ -54,7 +54,7 @@ body{
 .cargaTotal{
     background-color: rgb(126, 126, 126);
     width: 250px;
-    height: 10px;
+    height: 6px;
     border-radius: 5px;
 }
 
@@ -62,7 +62,7 @@ body{
     position: absolute;
     background-color: white;
     width: 250px;
-    height: 10px;
+    height: 6px;
     border-radius: 5px;
     animation: llenar 2s linear;
 }
@@ -78,6 +78,54 @@ body{
     }
 }
 
+
+/*------------------------------------------------- Sesion -----------------------------------------*/
+
+.sesion{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    background-color: rgba(226, 226, 226, 0.3);
+    backdrop-filter: blur(20px);
+    z-index: 15;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.sesion img{
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+}
+
+.sesion p{
+    margin-top: 10px;
+    font-family: var(--tipografia);
+    font-size: var(--tam-texto);
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+}
+
+.estilosBoton{
+    margin-top: 60px;
+    border: none;
+    font-family: var(--tipografia);
+    font-size: var(--tam-texto);
+    background-color: rgba(253, 129, 226, 0.8);
+    border-radius: 30px;
+    color: white;
+    cursor: pointer;
+    padding: 10px 25px;
+}
+
+.estilosBoton:hover{
+    background-color: rgba(253, 105, 221, 0.9);
+    transition: 0.5s;
+}
+
+
 /*------------------------------------------------- Navbar -----------------------------------------*/
 
 .header{
@@ -87,6 +135,8 @@ body{
     background-color: rgba(255, 158, 234, 0.3);
     color: white;
     font-size: 1rem;
+
+    visibility: hidden;
 }
 
 .nav{
@@ -138,6 +188,8 @@ body{
     margin: 0 auto;
     display: flex;
     justify-content: center; 
+
+    visibility: hidden;
 }
 
 .dock{
