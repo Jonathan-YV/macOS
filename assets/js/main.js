@@ -1,4 +1,10 @@
 
+const loader = document.querySelector('.loader');
+
+setTimeout(() =>{
+    loader.style.display = 'none'
+  },2500)
+
 /*------------------------------- Fecha -----------------------------*/
 
 function imprimirFecha(){
