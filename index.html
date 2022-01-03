@@ -12,12 +12,22 @@
 
     <!-- JavaScript personal -->
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/dock.js" defer></script>
+    <script src="assets/js/windows.js" defer></script>
 
     <!--ICONOS-->
     <script
     src="https://kit.fontawesome.com/5a36ceff30.js"
     crossorigin="anonymous"
     ></script>
+
+    <!-- Leaflet maps -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
 
 </head>
 <body>
@@ -76,7 +86,7 @@
 
     <!-- Dock -->
     <div class="dock-wrapper">
-        <div class="dock">
+        <div class="dock" id='dock'>
             <div class="dock-icon finder-b">
                 <div class="estatus">.</div>
                 <img src="assets/img/iconos/finder_macos_bigsur_icon_190173.png" alt="">
@@ -270,17 +280,7 @@
     <!-- <div class="music" id='music-b'>
     </div> -->
 
-    <!-- <div class="maps" id='maps-b'>
-    </div> -->
-
-    <!-- <div class="message" id='message-b'>
-    </div> -->
-
-    <!-- <div class="vs" id='vs-b'>
-    </div> -->
-
-    <!-- Safari -->
-    <div class="safari min">
+    <div class="maps">
         <div class="tamaño">
             <div class="resizer nw"></div>
             <div class="resizer ne"></div>
@@ -297,15 +297,45 @@
                     <div class="circulo rojo cerrar"></div>
                     <div class="circulo naranja maximizar "></div>
                     <div class="circulo verde minimizar"></div>
+                </div>
+            </div>
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <!-- <div class="message" id='message-b'>
+    </div> -->
+
+    <!-- <div class="vs" id='vs-b'>
+    </div> -->
+
+    <!-- Safari -->
+    <div class="safari min">
+        <!-- <div class="tamaño">
+            <div class="resizer nw"></div>
+            <div class="resizer ne"></div>
+            <div class="resizer sw"></div>
+            <div class="resizer se"></div>
+            <div class="resizerL n"></div>
+            <div class="resizerL e"></div>
+            <div class="resizerL w"></div>
+            <div class="resizerL s"></div>
+        </div> -->
+        <div class="contenidoT">
+            <div class="barra linea">
+                <div class="botones">
+                    <div class="circulo rojo cerrar"></div>
+                    <div class="circulo naranja maximizar "></div>
+                    <div class="circulo verde minimizar"></div>
                     <i class="fas fa-chevron-left menu-item"></i>
                     <i class="fas fa-chevron-right menu-item"></i>
                 </div>
                 <div class="barraBusquedaSafari">
                     <i class="fas fa-shield-alt"></i>
-                    <form action="">
-                        <input type="url" id='urlBuscar'>
-                        <input type="button" onclick='obtenerURL();'/>
-                    </form>
+                    
+                    <input type="url" id='urlBuscar'>
+                    <input type="button" onclick='obtenerURL();' value='Buscar'/>
+                    
                     
                 </div>
                 <div class="buscar">
@@ -314,12 +344,12 @@
                     <i class="fas fa-th-large menu-item"></i>
                 </div> 
             </div>
-            <!-- <div class="contenidoSafari">
+            <div class="contenidoSafari">
                 <iframe id="iframe-Safari"
                 title="Inline Frame Example"
                 src="">
                 </iframe>
-            </div>  -->
+            </div> 
         </div>    
     </div>
 
@@ -353,7 +383,13 @@
     <!-- <div class="whatsapp" id='whatsapp-b'>
     </div> -->
 
-    
+
+    <!-- Leaflet maps -->
+   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+
+
     
 </body>
 </html>

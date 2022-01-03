@@ -64,7 +64,7 @@ body{
     width: 250px;
     height: 6px;
     border-radius: 5px;
-    animation: llenar 2s linear;
+    animation: llenar 1s linear;
 }
 
 @keyframes llenar{
@@ -424,17 +424,23 @@ body{
 .contenidoSafari{
     
     display: flex;
-    margin-top: 10px;
-    height: calc(100% - 45px);
+    margin-top: 0px;
+    height: calc(100% - 40px);
     justify-content: center;
     
+}
+
+.linea{
+    width: 100%;
+    padding-bottom: 5px;
+    border-bottom: 1px solid black;
 }
 
 #iframe-Safari{
     width: 100%;
     height: 100%;
     
-    border-radius: 10px;
+    border-radius: 0px 0px 10px 10px;
     border: none;
 } 
 
@@ -448,6 +454,25 @@ body{
     border-radius: 10px;
     background-color: rgba(0, 15, 20,0.8);
     box-shadow: 10px 5px 30px rgba(0, 0, 0, 0.5);
+}
+
+.maps{
+    position: absolute;
+    top: 20rem;
+    left: 3rem;
+    width: 800px;
+    height: 500px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 10px 5px 30px rgba(0, 0, 0, 0.5);
+}
+
+#map { 
+    height: calc(100% - 45px);
+    width: 100%; 
+    border-radius: 0px 0px 10px 10px;
+    margin-top: 10px;
+    z-index: 1;
 }
 
 
