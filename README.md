@@ -1,10 +1,28 @@
-# CV
+# macOS
 
-Este es el repositorio del proyecto "Portafolio de evidencias web" utilizando HTML, CSS y JavaScript.
+Replica del sistema operativo macOS Monterey utilizando HTML, CSS y JavaScript.
+
 
 ## GitHub pages
 
-* https://jonathan-yv.github.io/jonathan-YV-CV/
+* https://jonathan-yv.github.io/macOS/
+
+
+## Componentes
+
+### Ventanas creadas
+* Finder
+* Maps
+* Safari
+* Terminal
+
+### Caracteristicas
+* Reloj
+* Cerrar
+* Maximizar
+* Minimizar
+* Cambio de tamaño de las ventanas
+* Movimiento de ventanas
 
 
 ## Autor ✒️
