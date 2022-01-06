@@ -4,7 +4,7 @@ Réplica del sistema operativo macOS Monterey utilizando HTML, CSS y JavaScript.
 
 <div>
     <p style = 'text-align:center;'>
-        <img src="assets/img/Inicio.png" alt="inicio" width="300px">
+        <img src="assets/img/Inicio.png" alt="inicio" width="600px">
     </p>
 </div>
 
