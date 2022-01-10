@@ -268,6 +268,8 @@ body{
     top: 3rem;
     left: 3rem;
     width: 800px;
+    min-width: 500px;
+    min-height: 400px;
     height: 500px;
     border-radius: 10px;
     box-shadow: 10px 5px 30px rgba(0, 0, 0, 0.5);
@@ -277,6 +279,7 @@ body{
 .contenidoT{
     width: 100%;
     height: 100%;
+    
 }
 
 .division{
@@ -298,6 +301,7 @@ body{
 }
 
 .contenidoVentana{
+    
     width: 100%;
     height: 100%;
     background-color: white;
@@ -368,8 +372,10 @@ body{
 }
 
 .archivos{
+    margin-right: 10px;
+    overflow-y: auto;
     width: auto;
-    height: auto;
+    height: 80%;
     display: grid;
     gap: 2rem;
     grid-auto-rows: 6rem;

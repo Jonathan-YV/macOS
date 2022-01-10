@@ -1,14 +1,14 @@
 /*------------------------------- Ventanas -----------------------------*/
 
-clasesVentanas.forEach((clases) =>{
-    const el = document.querySelector(clases);
-    const barra = document.querySelector(clases + ' .barra')
-    const botones = document.querySelector(clases + ' .botones')
+caracteristicasVentanas.forEach((clases) =>{
+    const el = document.querySelector(clases.class);
+    const barra = document.querySelector(clases.class + ' .barra')
+    const botones = document.querySelector(clases.class + ' .botones')
 
     function focus(){
         if (el.style.zIndex != 5){
             for (let ventana of clasesVentanas){
-                if (ventana != clases){
+                if (ventana != clases.class){
                     if(document.querySelector(ventana) != null){
                         document.querySelector(ventana).style.zIndex = '3';
                     } 
@@ -46,7 +46,7 @@ clasesVentanas.forEach((clases) =>{
     
             const rect = el.getBoundingClientRect();
             if (rect.top <= 25){
-                console.log('no pasa')
+               /*  console.log('no pasa') */
                 el.style.top = '25.1px';
             }
             else{
@@ -71,8 +71,8 @@ clasesVentanas.forEach((clases) =>{
         }
     }
 
-    const resizers = document.querySelectorAll(clases + ' .resizer');
-    const resizersL = document.querySelectorAll(clases + ' .resizerL');
+    const resizers = document.querySelectorAll(clases.class + ' .resizer');
+    const resizersL = document.querySelectorAll(clases.class + ' .resizerL');
     let currentRisizer;
 
     for(let resizerL of resizersL){
@@ -89,17 +89,44 @@ clasesVentanas.forEach((clases) =>{
             focus();
 
             function mousemove(e){
-                const rect = el.getBoundingClientRect();
-
-                       
+                const rect = el.getBoundingClientRect();   
 
                 if(currentRisizer.classList.contains('n')){
-                    el.style.height= rect.height + (prevY - e.clientY) + 'px';
-                    el.style.top = rect.top - (prevY - e.clientY) + 'px';
+                    if (rect.top > 25){
+                        if (rect.height > 400){
+                            el.style.height= rect.height + (prevY - e.clientY) + 'px';
+                            el.style.top = rect.top - (prevY - e.clientY) + 'px';
+                        }
+                        if (rect.height == 400){
+                            
+                            
+
+                            if ((e.clientY - rect.top) < 0){
+                                el.style.height= rect.height + (prevY - e.clientY) + 'px';
+                                el.style.top = rect.top - (prevY - e.clientY) + 'px';
+                            }
+                        }         
+                    }
+                    else if(rect.top <=25){
+                        el.style.height= rect.height - (25 - rect.top) + 'px';
+                        el.style.top = '25px';
+                        
+                        if((e.clientY - 25) > 0){
+                            el.style.height= rect.height + (prevY - e.clientY) + 'px';
+                            el.style.top = rect.top - (prevY - e.clientY) + 'px';
+                        }
+                        
+                    }
                 }
                 else if(currentRisizer.classList.contains('e')){
-                    el.style.width = rect.width + (prevX - e.clientX) + 'px';
-                    el.style.left = rect.left - (prevX - e.clientX) + 'px'
+                    if (rect.width > 500){
+                        el.style.width = rect.width + (prevX - e.clientX) + 'px';
+                        el.style.left = rect.left - (prevX - e.clientX) + 'px'
+                    }
+                    if (rect.width == 500 && (e.clientX - rect.left) < 0){
+                        el.style.width = rect.width + (prevX - e.clientX) + 'px';
+                        el.style.left = rect.left - (prevX - e.clientX) + 'px'
+                    }
                 }
                 else if(currentRisizer.classList.contains('w')){
                     el.style.width = rect.width - (prevX - e.clientX) + 'px';
@@ -174,9 +201,9 @@ clasesVentanas.forEach((clases) =>{
         }
     }
 
-    const minimizar = document.querySelector(clases + ' .minimizar');
-    const maximizar = document.querySelector(clases + ' .maximizar');
-    const cerrar = document.querySelector(clases + ' .cerrar');
+    const minimizar = document.querySelector(clases.class + ' .minimizar');
+    const maximizar = document.querySelector(clases.class + ' .maximizar');
+    const cerrar = document.querySelector(clases.class + ' .cerrar');
 
     if (minimizar != null && maximizar != null && cerrar != null){
 
@@ -199,19 +226,19 @@ clasesVentanas.forEach((clases) =>{
         
         minimizar.addEventListener('click',()=>{
             /* document.getElementById('finder-b').classList.toggle('min') */
-            document.querySelector(clases).classList.toggle('min')
+            document.querySelector(clases.class).classList.toggle('min')
             
         })
         
         cerrar.addEventListener('click',()=>{
             /* document.getElementById('finder-b').classList.toggle('min') */
-            document.querySelector(clases).classList.toggle('min')
-            document.querySelector(clases + '-b' + ' .estatus').style.backgroundColor = 'rgba(0, 0, 0, 0)'
+            document.querySelector(clases.class).classList.toggle('min')
+            document.querySelector(clases.class + '-b' + ' .estatus').style.backgroundColor = 'rgba(0, 0, 0, 0)'
         })
         
     }
     else{
-        console.log('Faltan botones de la ventana ' + clases)
+        /* console.log('Faltan botones de la ventana ' + clases.class) */
     }
     
 })

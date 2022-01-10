@@ -95,9 +95,6 @@ class Dock{
 
 new Dock(document.querySelector('.dock'));
 
-
-const clasesVentanas = ['.finder','.apps','.music','.maps','.message','.vs', '.safari','.settings','.console','.whatsapp']
-
 clasesVentanas.forEach((boton) => {
     document.querySelector(boton + '-b').addEventListener('mouseover',()=>{
         document.querySelector(boton + '-b' + ' p').style.display = 'flex'
